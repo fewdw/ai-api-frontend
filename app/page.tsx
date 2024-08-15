@@ -1,22 +1,19 @@
 import React from "react";
-import Header from "./components/Header";
-import Stats from "./components/Stats";
+import Stats from "./components/LandingPage/Stats";
+import Video from "./components/LandingPage/Video";
+import Pricing from "./components/LandingPage/Pricing";
 import Reviews from "./components/Reviews";
-import Footer from "./components/Footer";
-import Video from "./components/Video";
-import Pricing from "./components/Pricing";
+import CodeComponent from "./components/cards/CodeComponent";
 
-const page = () => {
+const Page = () => {
   return (
     <div>
-      <Header></Header>
-      <Video></Video>
-      <Stats></Stats>
-      <Reviews></Reviews>
-      <Pricing></Pricing>
-      <Footer></Footer>
+      <Video />
+      <Stats />
+      <Reviews />
+      <Pricing />
     </div>
   );
 };
 
-export default page;
+export default Page;

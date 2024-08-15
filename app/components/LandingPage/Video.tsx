@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Video = () => {
@@ -29,12 +30,12 @@ const Video = () => {
               .
             </p>
 
-            <a
-              href="#"
-              className="mt-8 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
+            <Link
+              href="/learn"
+              className="mt-8 inline-block rounded bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-blue-700 focus:outline-none focus:ring focus:ring-yellow-400"
             >
-              Get Started Today
-            </a>
+              Learn More
+            </Link>
           </div>
         </div>
       </div>
