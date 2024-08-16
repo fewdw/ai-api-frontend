@@ -1,18 +1,56 @@
-'use client';
-import React from 'react'
-import { useParams } from 'next/navigation';
-import Header from '@/app/components/Header/Header';
+"use client";
 
+import React, { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 
-const page = () => {
-    const params = useParams();
-  return (
-    <div>
-        
-        <p>{params.id}</p>
-        
-    </div>
-  )
+interface DataType {
+  id: number;
+  path: string;
+  prompt: string;
+  format: string;
+  visits: number;
+  owner: string;
+  key: string;
 }
 
-export default page
+const Page: React.FC = () => {
+  const params = useParams();
+  const [data, setData] = useState<DataType | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:8080/api/routes/${params.id}`,
+          {
+            credentials: "include",
+          }
+        );
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [params.id]);
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div>
+      <p>id: {data.id}</p>
+      <p>path: {data.path}</p>
+      <p>prompt: {data.prompt}</p>
+      <p>format: {data.format}</p>
+      <p>visits: {data.visits}</p>
+      <p>owner: {data.owner}</p>
+      <p>key: {data.key}</p>
+    </div>
+  );
+};
+
+export default Page;
