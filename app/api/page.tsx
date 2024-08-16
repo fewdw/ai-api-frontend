@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import MyAPIs from "../components/MyAPIS";
+import MyAPIs from "../components/MyAPIs";
 import AddNewRoute from "../components/AddNewRoute";
 
 const Api = () => {
