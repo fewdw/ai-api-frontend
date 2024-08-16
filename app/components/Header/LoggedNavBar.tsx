@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState } from "react";
 
 interface LoggedNavBarProps {
@@ -5,7 +6,10 @@ interface LoggedNavBarProps {
   username: string;
 }
 
-const LoggedNavBar: React.FC<LoggedNavBarProps> = ({ profilePic, username }) => {
+const LoggedNavBar: React.FC<LoggedNavBarProps> = ({
+  profilePic,
+  username,
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuToggle = () => {
@@ -15,10 +19,10 @@ const LoggedNavBar: React.FC<LoggedNavBarProps> = ({ profilePic, username }) => 
   const handleLogout = async () => {
     try {
       await fetch("http://localhost:8080/logout", {
-        method: 'POST',
-        credentials: 'include', // Include cookies with the request
+        method: "POST",
+        credentials: "include",
       });
-      window.location.reload(); // Reload the page after logout
+      window.location.reload();
     } catch (error) {
       console.error("Error logging out:", error);
     }
@@ -26,14 +30,6 @@ const LoggedNavBar: React.FC<LoggedNavBarProps> = ({ profilePic, username }) => 
 
   return (
     <div className="relative flex items-center">
-      <img
-        src={profilePic}
-        alt="Profile"
-        className="w-10 h-10 rounded-full object-cover mr-3"
-        onError={(e) => {
-          (e.target as HTMLImageElement).src = '/path/to/default/image.jpg'; // Provide a default image in case of error
-        }}
-      />
       <div className="relative">
         <div className="inline-flex items-center overflow-hidden rounded-md border bg-white">
           <span className="border-e px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-700">
@@ -66,41 +62,32 @@ const LoggedNavBar: React.FC<LoggedNavBarProps> = ({ profilePic, username }) => 
             role="menu"
           >
             <div className="p-2">
-              <a
-                href="#"
+              <Link
+                href="/api"
                 className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
                 role="menuitem"
               >
-                View on Storefront
-              </a>
+                My APIs
+              </Link>
 
-              <a
-                href="#"
+              <Link
+                href="/public"
                 className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
                 role="menuitem"
               >
-                View Warehouse Info
-              </a>
-
-              <a
-                href="#"
-                className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
-                role="menuitem"
-              >
-                Duplicate Product
-              </a>
-
-              <a
-                href="#"
-                className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
-                role="menuitem"
-              >
-                Unpublish Product
-              </a>
+                Public APIs
+              </Link>
             </div>
 
             <div className="p-2">
-              <form method="POST" action="#" onSubmit={(e) => { e.preventDefault(); handleLogout(); }}>
+              <form
+                method="POST"
+                action="#"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleLogout();
+                }}
+              >
                 <button
                   type="submit"
                   className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
@@ -127,6 +114,14 @@ const LoggedNavBar: React.FC<LoggedNavBarProps> = ({ profilePic, username }) => 
           </div>
         )}
       </div>
+      <img
+        src={profilePic}
+        alt="Profile"
+        className="w-10 h-10 rounded-full object-cover mr-3 ml-4"
+        onError={(e) => {
+          (e.target as HTMLImageElement).src = "/path/to/default/image.jpg"; // Provide a default image in case of error
+        }}
+      />
     </div>
   );
 };

@@ -13,30 +13,30 @@ const Examples = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
         <ExampleEndPointCard
-          companyName="User Profile"
-          apiEndpoint={`${route}generateUserProfile`}
+          companyName="Alien Planets"
+          apiEndpoint={`${route}generateAlienPlanets`}
           codeLines={[
-            "Create a dynamic API that",
-            "crafts detailed user profiles",
-            "tailored to your specific needs",
+            "Generate alien planets",
+            "with unique environments",
+            "and species details.",
           ]}
         />
         <ExampleEndPointCard
-          companyName="Book Details"
-          apiEndpoint={`${route}generateBookDetails`}
+          companyName="Startup Ideas"
+          apiEndpoint={`${route}generateStartupIdeas`}
           codeLines={[
-            "Get instant book details",
-            "with titles, authors, and",
-            "publication years at your fingertips",
+            "Get innovative startups",
+            "with market focus",
+            "and business ideas.",
           ]}
         />
         <ExampleEndPointCard
-          companyName="Random Quotes"
-          apiEndpoint={`${route}generateRandomQuotes`}
+          companyName="Time Travel"
+          apiEndpoint={`${route}generateTimeTravelScenarios`}
           codeLines={[
-            "Inject inspiration into your app",
-            "with a selection of quotes",
-            "served fresh with each call",
+            "Create time travel scenarios",
+            "with historical events",
+            "and outcomes.",
           ]}
         />
       </div>

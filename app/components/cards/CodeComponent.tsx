@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface CodeComponentProps {
   lines: string[];
@@ -6,7 +6,7 @@ interface CodeComponentProps {
 
 const CodeComponent: React.FC<CodeComponentProps> = ({ lines }) => {
   return (
-    <div className="mockup-code overflow-hidden">
+    <div className="mockup-code overflow-hidden hover:bg-slate-600">
       {lines.map((line, index) => (
         <pre key={index} data-prefix="">
           <code className="whitespace-pre-wrap break-words">{line}</code>
