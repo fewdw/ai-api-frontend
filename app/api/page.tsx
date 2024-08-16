@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const api = () => {
-  return (
-    <div>
-      all routes here 
-    </div>
-  )
-}
+  return <div>hi</div>;
+};
 
-export default api
+export default api;

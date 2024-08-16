@@ -11,7 +11,6 @@ const Page = () => {
       <Video />
       <Stats />
       <Reviews />
-      <Pricing />
     </div>
   );
 };

@@ -1,19 +1,22 @@
-'use client';
+"use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import LoggedNavBar from "./LoggedNavBar";
 import NotLoggedNavBar from "./NotLoggedNavBar";
 
 const Header = () => {
-  const [userInfo, setUserInfo] = useState<{ profilePic: string; username: string } | null>(null);
-  const [loading, setLoading] = useState(true); // Add a loading state
+  const [userInfo, setUserInfo] = useState<{
+    profilePic: string;
+    username: string;
+  } | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
         const response = await fetch("http://localhost:8080/api/user/info", {
-          method: 'GET',
-          credentials: 'include', // Include cookies with the request
+          method: "GET",
+          credentials: "include",
         });
 
         if (response.ok) {
@@ -23,7 +26,7 @@ const Header = () => {
       } catch (error) {
         console.error("Error fetching user info:", error);
       } finally {
-        setLoading(false); // Set loading to false after fetching is complete
+        setLoading(false);
       }
     };
 
@@ -47,7 +50,10 @@ const Header = () => {
             {loading ? (
               <div className="text-slate-950"></div>
             ) : userInfo ? (
-              <LoggedNavBar profilePic={userInfo.profilePic} username={userInfo.username} />
+              <LoggedNavBar
+                profilePic={userInfo.profilePic}
+                username={userInfo.username}
+              />
             ) : (
               <NotLoggedNavBar />
             )}
