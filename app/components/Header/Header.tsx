@@ -8,6 +8,7 @@ const Header = () => {
   const [userInfo, setUserInfo] = useState<{
     profilePic: string;
     username: string;
+    premium: boolean; // Add premium field
   } | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -53,6 +54,7 @@ const Header = () => {
               <LoggedNavBar
                 profilePic={userInfo.profilePic}
                 username={userInfo.username}
+                premium={userInfo.premium}
               />
             ) : (
               <NotLoggedNavBar />

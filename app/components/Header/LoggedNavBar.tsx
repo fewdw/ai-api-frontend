@@ -4,11 +4,13 @@ import React, { useState } from "react";
 interface LoggedNavBarProps {
   profilePic: string;
   username: string;
+  premium: boolean; // Add premium field
 }
 
 const LoggedNavBar: React.FC<LoggedNavBarProps> = ({
   profilePic,
   username,
+  premium,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -122,6 +124,14 @@ const LoggedNavBar: React.FC<LoggedNavBarProps> = ({
           (e.target as HTMLImageElement).src = "/path/to/default/image.jpg"; // Provide a default image in case of error
         }}
       />
+      {!premium && (
+        <Link
+          href="/pro"
+          className="ml-4 rounded-md bg-green-500 hover:bg-green-600 px-5 py-2.5 text-sm font-medium text-white shadow"
+        >
+          Go Pro
+        </Link>
+      )}
     </div>
   );
 };
