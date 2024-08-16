@@ -116,22 +116,22 @@ const LoggedNavBar: React.FC<LoggedNavBarProps> = ({
           </div>
         )}
       </div>
+      {!premium && (
+        <Link
+          href="/pro"
+          className="ml-4 rounded-md bg-blue-500 hover:bg-blue-600 px-5 py-2.5 text-sm font-medium text-white shadow"
+        >
+          Go Pro
+        </Link>
+      )}
       <img
         src={profilePic}
         alt="Profile"
         className="w-10 h-10 rounded-full object-cover mr-3 ml-4"
         onError={(e) => {
-          (e.target as HTMLImageElement).src = "/path/to/default/image.jpg"; // Provide a default image in case of error
+          (e.target as HTMLImageElement).src = "/path/to/default/image.jpg";
         }}
       />
-      {!premium && (
-        <Link
-          href="/pro"
-          className="ml-4 rounded-md bg-green-500 hover:bg-green-600 px-5 py-2.5 text-sm font-medium text-white shadow"
-        >
-          Go Pro
-        </Link>
-      )}
     </div>
   );
 };
