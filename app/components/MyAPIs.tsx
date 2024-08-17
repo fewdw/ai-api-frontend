@@ -55,7 +55,7 @@ const MyAPIs: React.FC = () => {
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                 Owner
               </th>
-              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 mr-10">
                 Key
               </th>
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">

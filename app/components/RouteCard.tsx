@@ -22,23 +22,12 @@ const RouteCard: React.FC<RouteCardProps> = ({
   visits,
   apiKey,
 }) => {
-  const [tooltip, setTooltip] = useState("Copy to clipboard");
   const [urlTooltip, setUrlTooltip] = useState("Copy URL");
-  const [copied, setCopied] = useState(false);
-
-  const handleKeyCopyClick = () => {
-    navigator.clipboard
-      .writeText(apiKey)
-      .then(() => {
-        setCopied(true);
-        setTooltip("Copied to clipboard ✅");
-        setTimeout(() => setCopied(false), 2000); // Hide message after 2 seconds
-      })
-      .catch(() => setTooltip("Failed to copy"));
-  };
+  const [isPublic, setIsPublic] = useState(apiKey === "public");
+  const [currentKey, setCurrentKey] = useState(apiKey);
 
   const handleUrlCopyClick = () => {
-    const url = `http://localhost:8080/r/${owner}/${apiKey}/${path}`;
+    const url = `http://localhost:8080/r/${owner}/${currentKey}/${path}`;
     navigator.clipboard
       .writeText(url)
       .then(() => {
@@ -48,46 +37,62 @@ const RouteCard: React.FC<RouteCardProps> = ({
       .catch(() => setUrlTooltip("Failed to copy URL"));
   };
 
+  const handleToggleChange = async () => {
+    const newKey = isPublic ? "private" : "public";
+
+    try {
+      const response = await fetch(`http://localhost:8080/api/routes/${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          id: String(id),
+          key: newKey,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      setIsPublic(data.key === "public");
+      setCurrentKey(data.key);
+    } catch (error) {
+      console.error("Failed to update the route key:", error);
+    }
+  };
+
   return (
     <tr className="hover:bg-gray-100">
       <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
         <Link href={`/api/${id}`}>{path}</Link>
       </td>
       <td className="whitespace-nowrap px-4 py-2 text-gray-700">{owner}</td>
-      <td className="whitespace-nowrap px-4 py-2 text-gray-700 flex items-center gap-2">
-        <span>{truncateKey(apiKey)}</span>
-        {apiKey.length > 10 && (
-          <button
-            onClick={handleKeyCopyClick}
-            className="relative flex items-center justify-center text-gray-500 hover:text-gray-700"
-            aria-label="Copy key to clipboard"
-          >
-            <span className="text-lg" role="img" aria-label="clipboard">
-              📋
-            </span>
-            <span
-              className={`absolute bottom-full left-1/2 transform -translate-x-1/2 bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap opacity-0 transition-opacity duration-300 ${
-                copied ? "opacity-100" : ""
-              }`}
-            >
-              {tooltip}
-            </span>
-          </button>
-        )}
+      <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+        <span>{truncateKey(currentKey)}</span>
       </td>
       <td className="whitespace-nowrap px-4 py-2 text-gray-700">
         <label
           htmlFor={`switch-${id}`}
           className="relative inline-block h-8 w-14 cursor-pointer rounded-full bg-gray-300 transition [-webkit-tap-highlight-color:_transparent] has-[:checked]:bg-green-500"
         >
-          <input type="checkbox" id={`switch-${id}`} className="peer sr-only" />
+          <input
+            type="checkbox"
+            id={`switch-${id}`}
+            className="peer sr-only"
+            checked={!isPublic}
+            onChange={handleToggleChange}
+          />
           <span className="absolute inset-y-0 start-0 m-1 size-6 rounded-full bg-white transition-all peer-checked:start-6"></span>
         </label>
       </td>
       <td className="whitespace-nowrap px-4 py-2 text-gray-700 flex items-center gap-2 p-0">
         <div className="relative group">
           <Link
-            href={`http://localhost:8080/r/${owner}/${apiKey}/${path}`}
+            href={`http://localhost:8080/r/${owner}/${currentKey}/${path}`}
             className="relative flex items-center justify-center text-gray-500 hover:text-gray-700"
             aria-label="Visit Endpoint"
             target="_blank"
@@ -108,7 +113,7 @@ const RouteCard: React.FC<RouteCardProps> = ({
             aria-label="Copy URL to clipboard"
           >
             <span className="text-lg" role="img" aria-label="copy-url">
-              📋
+              🔗
             </span>
             <span
               className={`absolute bottom-full left-1/2 transform -translate-x-1/2 bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap opacity-0 transition-opacity duration-300 ${
