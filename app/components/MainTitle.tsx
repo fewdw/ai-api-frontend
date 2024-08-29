@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { LOGIN_API_ROUTES } from "../utils/ApiRoutes";
+import HeroButton from "./HeroButton";
 
 const MainTitle = () => {
   return (
@@ -22,12 +23,7 @@ const MainTitle = () => {
             .
           </p>
 
-          <a
-            href={LOGIN_API_ROUTES}
-            className="mt-8 inline-block rounded bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-blue-700 focus:outline-none focus:ring focus:ring-yellow-400"
-          >
-            Register
-          </a>
+          <HeroButton />
         </div>
       </div>
     </section>
