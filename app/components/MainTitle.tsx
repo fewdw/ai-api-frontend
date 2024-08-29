@@ -22,10 +22,10 @@ const MainTitle = () => {
           </p>
 
           <Link
-            href="/learn"
+            href="/login"
             className="mt-8 inline-block rounded bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-blue-700 focus:outline-none focus:ring focus:ring-yellow-400"
           >
-            Learn More
+            Register
           </Link>
         </div>
       </div>

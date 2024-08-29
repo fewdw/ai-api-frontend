@@ -1,7 +1,7 @@
 import React from "react";
-import Stats from "./components/LandingPage/Stats";
 
-import NewHero from "./components/Header/NewHero";
+import NewHero from "./components/NewHero";
+import Stats from "./components/Stats";
 
 const Page = () => {
   return (

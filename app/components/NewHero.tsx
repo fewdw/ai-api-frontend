@@ -1,6 +1,6 @@
 import React from "react";
-import SectionGrid from "../SectionGrid";
-import MainTitle from "../MainTitle";
+import MainTitle from "./MainTitle";
+import SectionGrid from "./SectionGrid";
 
 const NewHero = () => {
   return (
