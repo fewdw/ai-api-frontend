@@ -32,6 +32,10 @@ const Header = () => {
       });
   }, []);
 
+  if (isLoading) {
+    return null;
+  }
+
   return userInfo ? (
     <LoggedHeader
       username={userInfo.username}

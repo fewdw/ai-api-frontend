@@ -7,7 +7,6 @@ const Page = () => {
   return (
     <div>
       <NewHero />
-      <Stats />
     </div>
   );
 };

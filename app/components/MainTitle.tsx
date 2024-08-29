@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import { LOGIN_API_ROUTES } from "../utils/ApiRoutes";
 
 const MainTitle = () => {
   return (
@@ -8,10 +9,10 @@ const MainTitle = () => {
         <div className="lg:py-24">
           <h1 className="bg-gradient-to-r from-blue-500 via-blue-600 to-slate-800 bg-clip-text text-4xl font-extrabold text-transparent sm:text-6xl leading-tight">
             Create Your Endpoint.
-            <span className="block mt-2">Deploy In Seconds.</span>
+            <span className="block mt-2 pb-3">Deploy In Seconds.</span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-xl text-lg sm:text-xl leading-relaxed text-gray-700">
+          <p className="mx-auto mt-6 max-w-xl text-lg sm:text-xl leading-relaxed text-gray-700 ml-0">
             Need an endpoint for a project or a quick demo?
             <br />
             Use our AI to generate and deploy it in&nbsp;
@@ -21,12 +22,12 @@ const MainTitle = () => {
             .
           </p>
 
-          <Link
-            href="/login"
+          <a
+            href={LOGIN_API_ROUTES}
             className="mt-8 inline-block rounded bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-blue-700 focus:outline-none focus:ring focus:ring-yellow-400"
           >
             Register
-          </Link>
+          </a>
         </div>
       </div>
     </section>
