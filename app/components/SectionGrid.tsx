@@ -2,53 +2,37 @@ import React from "react";
 
 const SectionGrid = () => {
   return (
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-      <div className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring">
-        <span className="text-2xl">🤖</span>
-        <h2 className="mt-2 font-bold">Describe your API</h2>
-        <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
-          Provide a description and let our AI handle the rest.
-        </p>
-      </div>
+    <div className="lg:pt-28">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 align-middle">
+        <div className="flex flex-col items-start justify-start p-6 bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition">
+          <span className="text-4xl">🛠️</span>
+          <h2 className="mt-4 font-bold text-xl">Create your endpoint</h2>
+          <p className="mt-2 text-gray-600 text-sm">
+            Easily set up your own API endpoint by simply providing a JSON
+            format and a custom pathname. No coding required—just upload, and
+            your data is ready to be accessed online.
+          </p>
+        </div>
 
-      <div className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring">
-        <span className="text-2xl">📑</span>
-        <h2 className="mt-2 font-bold">Choose the format</h2>
-        <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
-          Select the desired format for your API.
-        </p>
-      </div>
+        <div className="flex flex-col items-start justify-start p-6 bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition">
+          <span className="text-4xl">🚀</span>
+          <h2 className="mt-4 font-bold text-xl">Deploy Instantly</h2>
+          <p className="mt-2 text-gray-600 text-sm">
+            With just one click, your API is live and ready to use. Forget about
+            lengthy setups or waiting times—your data is instantly accessible at
+            the endpoint you specify.
+          </p>
+        </div>
 
-      <div className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring">
-        <span className="text-2xl">⚡</span>
-        <h2 className="mt-2 font-bold">Generate it within seconds</h2>
-        <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
-          Your API endpoint is generated and hosted instantly.
-        </p>
-      </div>
-
-      <div className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring">
-        <span className="text-2xl">🔓</span>
-        <h2 className="mt-2 font-bold">Free unlimited access</h2>
-        <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
-          Enjoy unrestricted access to your API without any limitations.
-        </p>
-      </div>
-
-      <div className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring">
-        <span className="text-2xl">📜</span>
-        <h2 className="mt-2 font-bold">View past logs</h2>
-        <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
-          Keep track of all API requests and responses with comprehensive logs.
-        </p>
-      </div>
-
-      <div className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring">
-        <span className="text-2xl">🌐</span>
-        <h2 className="mt-2 font-bold">Browse community APIs</h2>
-        <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
-          Explore and use APIs created by other users in our community.
-        </p>
+        <div className="flex flex-col items-start justify-start p-6 bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition">
+          <span className="text-4xl">🎉</span>
+          <h2 className="mt-4 font-bold text-xl">Free unlimited access</h2>
+          <p className="mt-2 text-gray-600 text-sm">
+            Enjoy unlimited access to your hosted APIs without any hidden fees
+            or restrictions. It's free, forever—host and share your data
+            effortlessly.
+          </p>
+        </div>
       </div>
     </div>
   );

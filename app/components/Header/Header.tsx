@@ -1,69 +1,7 @@
-"use client";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import LoggedNavBar from "./LoggedNavBar";
-import NotLoggedNavBar from "./NotLoggedNavBar";
+import React from "react";
 
 const Header = () => {
-  const [userInfo, setUserInfo] = useState<{
-    profilePic: string;
-    username: string;
-    premium: boolean; // Add premium field
-  } | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/api/user/info", {
-          method: "GET",
-          credentials: "include",
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          setUserInfo(data);
-        }
-      } catch (error) {
-        console.error("Error fetching user info:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchUserInfo();
-  }, []);
-
-  return (
-    <header className="bg-white">
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <div className="flex-1 md:flex md:items-center md:gap-12">
-            <Link
-              href="/"
-              className="text-slate-950 transition hover:text-slate-500"
-            >
-              Cloud-API
-            </Link>
-          </div>
-
-          <div className="md:flex md:items-center md:gap-12">
-            {loading ? (
-              <div className="text-slate-950"></div>
-            ) : userInfo ? (
-              <LoggedNavBar
-                profilePic={userInfo.profilePic}
-                username={userInfo.username}
-                premium={userInfo.premium}
-              />
-            ) : (
-              <NotLoggedNavBar />
-            )}
-          </div>
-        </div>
-      </div>
-    </header>
-  );
+  return <div>Header</div>;
 };
 
 export default Header;

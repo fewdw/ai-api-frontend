@@ -1,16 +1,14 @@
 import React from "react";
 import Stats from "./components/LandingPage/Stats";
-import Video from "./components/LandingPage/Video";
-import Reviews from "./components/Reviews";
+
+import NewHero from "./components/Header/NewHero";
 
 const Page = () => {
   return (
     <div>
-      <Video />
+      <NewHero />
       <Stats />
-      <Reviews />
     </div>
   );
 };
-
 export default Page;
